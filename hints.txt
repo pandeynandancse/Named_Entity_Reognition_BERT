@@ -1,0 +1,119 @@
+config
+
+dataset
+
+engine 
+
+model
+
+train
+
+predict
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+various layers  ---          -   linear   - conv - pooling-----------flatten - rnn - lstm - gru - bidirectional rnn/lstm/gru  --- encoder-decoder-attention-transformer(masking)
+padding --- stride  ---- filters 
+
+
+various activation function  -  relu - dropout - sigmoid - softmax - leakyrelu  
+various loss function        ---- bce ---- cross_entropy  ---- ctc loss(for sequence modelling such as lstm ==>> captcha , handwrtting recognition)
+various performance matrix     ---- f1 ---- roc-auc -----pr auc
+various models 
+various regularizations   -- l1 ------ l2 ----- l1+l2  ------ drop-out  ------ augmentations
+various cross validation ----- kfold ----- startified k fold(if imabalance)  ----- group k fold
+various hyperparamter tuning techniques
+handling categorical features ---- one hot encoding ----- label encoder
+various opptimizer ---  adamw --------SGD (with or without momentum) --------  AdaDelta -------- AdaGrad ------- RMSProp
+   
+
+various methods for missing values
+pca
+
+normalization  ===>>> use it when your data has varying scales and the algorithm you are using does not make any assumptions about the distribution of your data such as knn and ann  ===>>> ranges from 0 to 1  =>>>best normalization method depends on Z-score ===>> good to use if you  know that distribution of your data does not follow guassian distribution ===>>> it has a bounding range
+
+
+
+Feature scaling or standardization ===>> applied to independent features ===>>> it assumes that your data has guassian distribution====>>> if scaling is not done then ml model weighs greater values  as higer weight and samlller values as  lower weights  ===>>> after  transformation data will be mean of 0 and std of 1  ====>>> outliers are 
+not affected by this becoz standardization does not have a bounding range unlike Normalization
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+activation   ---------   sigmoid(binary class) =====  softmax(multclass -- sum upto 1) =====  relu (for inner layer )   --------      
+bias  vs variance
+confusion matrix
+
+
+
+
+
+loss function ----------  BCEWithLogitsLoss (binary classification)   ----------------    cross entropy (multiclass classification problem so cross entropy)  ------------  recall-score ---------------  pr-auc (if class imbalance,tp and fp)    --------roc auc(don't use if clas imabalance)   ---------------- rmse  (for regression problem)--------- f1-score(if fp and fn r imp , for imabalanced class , high f1 score better model) --------    jaccard    ----- accuracy(if tp and tn r  imp)
+
+
+
+-----------------------------------------------
+pr-auc ====>>> high auc means high precision and high recall ====>>> high precision means low fp ===>>>>> high recall means low fn
+-------------------------------------------------
+
+
+different models  --- image classification model ---- object detection model  ----- text classification/extarction model --------- language modelling model ------   
+
+
+
+logits , labels, softmax_cross_entropy_with_logits
+
+
+
+np-->> vstack   -- hstack  ---- ravel
+
+
+
+_____________________________________________________________________________________________________________________________________________
+
+
+
+
+    Sigmoid functions and their combinations generally work better in the case of classification problems.
+    Sigmoid and tanh functions are sometimes avoided due to the vanishing gradient problem.
+    Tanh is avoided most of the time due to dead neuron problem.
+    ReLU activation function is widely used and is default choice as it yields better results.
+    If we encounter a case of dead neurons in our networks the leaky ReLU function is the best choice.
+    ReLU function should only be used in the hidden layers.
+    An output layer can be linear activation function in case of regression problems.
+
+
+
+_____________________________________________________________________________________________________________________________________________
+
+
+reduce_lr_on_plateu
+
+
+early stopping
+
+
+_____________________________________________________________________________________________________________________________________________
+
+
+
+torch.full
+torch.where
+get_linear_schedule_with_warmup
+
+
+squeeze :   Removes dimensions of size 1 from the shape of a tensor.
+
+unsqueeze
+
+reshape(-1)
+        #without reshape(-1)  ==>> it was like ===>> [[0,1,2,3,4,5,6]]
+        #after reshape =>>> [0,1,2,3,4,5,6]
+
+view(-1)
+
+permute
+
+decay
